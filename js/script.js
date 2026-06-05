@@ -7,13 +7,13 @@ const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
-        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        navMenu.classList.toggle('active');
     });
 
     // Close menu when a link is clicked
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            navMenu.style.display = 'none';
+            navMenu.classList.remove('active');
         });
     });
 }
@@ -45,7 +45,7 @@ window.addEventListener('scroll', () => {
 
 // ========================================
 // SCROLL ANIMATIONS
-// ========================================
+// ======================================= =/
 
 const observerOptions = {
     threshold: 0.1,
@@ -61,7 +61,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.project-card, .skill-category, .info-box').forEach(el => {
+document.querySelectorAll('.experience-item, .skill-category, .project-card, .stat-item, .info-box').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'all 0.6s ease';
@@ -73,36 +73,41 @@ document.querySelectorAll('.project-card, .skill-category, .info-box').forEach(e
 // ========================================
 
 const animateCounters = () => {
-    const infoItems = document.querySelectorAll('.info-item h3');
+    const statItems = document.querySelectorAll('.stat-number');
     const duration = 2000;
     const frameRate = 60;
     const frames = duration / (1000 / frameRate);
 
-    infoItems.forEach(item => {
-        const target = parseInt(item.textContent);
-        let current = 0;
-        const increment = target / frames;
-        const startTime = Date.now();
+    statItems.forEach(item => {
+        const targetText = item.textContent;
+        const target = parseInt(targetText);
+        
+        // Only animate numbers
+        if (!isNaN(target)) {
+            let current = 0;
+            const increment = target / frames;
+            let animated = false;
 
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                item.textContent = Math.floor(current) + '+';
-                requestAnimationFrame(updateCounter);
-            } else {
-                item.textContent = target + '+';
-            }
-        };
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    item.textContent = Math.floor(current) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    item.textContent = targetText;
+                    animated = true;
+                }
+            };
 
-        // Trigger animation when element comes into view
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && current === 0) {
-                updateCounter();
-                observer.unobserve(item);
-            }
-        });
+            // Trigger animation when element comes into view
+            const counterObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !animated) {
+                    updateCounter();
+                }
+            });
 
-        observer.observe(item);
+            counterObserver.observe(item);
+        }
     });
 };
 
@@ -121,9 +126,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         }
@@ -131,45 +139,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========================================
-// DARK MODE TOGGLE (OPTIONAL)
-// ========================================
-
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-if (prefersDarkScheme.matches) {
-    document.body.style.backgroundColor = '#1a202c';
-    document.body.style.color = '#e2e8f0';
-}
-
-// ========================================
-// FORM SUBMISSION (IF NEEDED)
-// ========================================
-
-const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted');
-};
-
-// ========================================
 // PAGE LOAD ANIMATION
 // ========================================
 
 window.addEventListener('load', () => {
     document.body.style.opacity = '1';
-    document.body.style.animation = 'fadeIn 0.5s ease';
 });
 
-// Add animation keyframes
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+// ========================================
+// COPY TO CLIPBOARD (for contact info)
+// ========================================
+
+const infoBoxes = document.querySelectorAll('.info-box a, .info-box p');
+infoBoxes.forEach(box => {
+    if (box.href && (box.href.startsWith('mailto:') || box.href.startsWith('tel:'))) {
+        box.addEventListener('click', function(e) {
+            // Allow default behavior for mailto and tel
+        });
     }
-`;
-document.head.appendChild(style);
+});
+
+// ========================================
+// ADD ANALYTICS (Optional - Uncomment to use)
+// ========================================
+
+// Example: Track page views
+console.log('Portfolio loaded successfully!');
+console.log('Total sections: ' + document.querySelectorAll('section').length);
+console.log('Total experience items: ' + document.querySelectorAll('.experience-item').length);
