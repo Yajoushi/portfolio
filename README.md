@@ -1,120 +1,144 @@
-# Yajoushi Sharma - SDET & QA Automation Engineer
+# API Automation Testing Framework
 
-**Senior Test Engineer | QA Automation Engineer | SDET**
+A scalable API automation framework designed to validate REST services, business workflows, data integrity, and application reliability across multiple environments.
 
-📍 New Delhi, India | 📱 +91 82787 96760 | 📧 [yajushis@gmail.com](mailto:yajushis@gmail.com) | 🌍 Open to relocation
+## Overview
 
----
+This project demonstrates API testing practices used to validate backend services, ensure data consistency, and accelerate regression testing through automation.
 
-## 🎯 Professional Summary
+The framework supports:
 
-SDET / QA Automation Engineer with **4+ years** of experience in designing and implementing test strategies that improve product reliability and accelerate release cycles across fintech and telecom products. Experienced in delivering high-quality software in Agile environments, collaborating with cross-functional teams, and contributing to scalable quality engineering practices that support rapid product delivery.
+* REST API automation
+* Request and response validation
+* Schema validation
+* Database verification
+* Environment-based execution
+* CI/CD integration
+* Automated reporting
 
----
+## Business Goal
 
-## 💻 Core Technical Skills
+Ensure API reliability, reduce manual testing effort, and provide fast feedback on service quality during development and release cycles.
 
-### Automation Frameworks & Tools
-- **Web Automation:** Playwright, Cypress, Selenium WebDriver
-- **Mobile Automation:** Appium (iOS/Android)
-- **API Testing:** REST Assured, Postman
-- **Test Patterns:** Page Object Model (POM), Data-Driven Testing, reusable utilities
-- **Build & Test Tools:** TestNG, Maven, cross-browser testing
+## Tech Stack
 
-### API, Database & Infrastructure
-- REST API testing & JSON validation
-- SQL, PostgreSQL, backend testing, data validation
-- Git version control, Jira project management
-- BrowserStack, Linux
+* Java
+* REST Assured
+* TestNG
+* Maven
+* Postman
+* SQL
+* Jenkins
+* GitHub Actions
+* JSON Schema Validation
+* Git
 
-### CI/CD & QA Delivery
-- **Pipelines:** Jenkins, GitHub Actions
-- **Testing Types:** Regression, smoke, sanity, exploratory testing
-- **QA Practices:** Test planning, test case design, defect tracking, root cause analysis
-- **Agile/Scrum** - Release readiness, quality sign-off
+## Framework Capabilities
 
----
+### API Validation
 
-## 🚀 Professional Experience
+* Status code verification
+* Response body validation
+* Header validation
+* Schema validation
+* Response time checks
 
-### **Moody's Ratings, Gurugram, India**
-**Associate Software Engineer - QA Automation** | Sep 2024 - Present
+### Data Validation
 
-- **Led Cypress to Playwright migration**, improving test reliability and reducing flaky test executions by **25-30%** for enterprise web workflows
-- **Designed and enhanced** web/API automation frameworks using Playwright, Cypress, REST Assured, POM, reusable utilities and data-driven testing, improving QA efficiency by **20%**
-- **Owned end-to-end QA** for 5+ POD features, including requirement analysis, test planning, automation, execution, defect tracking, release readiness and quality sign-off
-- **Built Unified View automation** for case creation and business review workflows, reducing repetitive manual setup effort by **30%**
-- **Automated IssuerFocus workflows** across CFG, FIG, LITE and FAQ modules, including issuer profile score, credit impact score, hierarchy dropdown, admin regression and role-based access
-- **Performed flaky test triage** and root cause analysis, increasing automation stability and reducing reruns by **20%**
-- **Configured Jenkins jobs** and GitHub Actions workflows for CI/CD-based automation execution and faster regression feedback
+* Database verification
+* API-to-database consistency checks
+* End-to-end workflow validation
 
-### **Comviva - A Tech Mahindra Company, Gurugram, India**
+### Test Design
 
-**Senior Test Engineer** | Dec 2023 - Aug 2024
+* Data-driven testing
+* Parameterized requests
+* Environment-specific configurations
+* Reusable utility methods
 
-- **Automated 300+ Android/iOS test cases** using Appium and Java, improving mobile regression coverage and execution reliability by **25-30%**
-- **Built Cypress web automation suites** and REST Assured API automation, reducing manual regression effort by **20%**
-- **Created test plans for 10+ new features**, improving coverage by **30%** through cross-functional coordination
-- **Designed detailed test scenarios** using enumeration and test design techniques, reducing defect leakage by **15%**
+## Framework Structure
 
-**Test Engineer** | Apr 2022 - Dec 2023
+```bash
+api-automation-testing/
+├── src/test/java
+│   ├── tests
+│   ├── api
+│   ├── utils
+│   └── models
+├── test-data
+├── reports
+├── config
+├── pom.xml
+└── README.md
+```
 
-- **Owned QA delivery for 6+ modules** from requirement analysis to test planning, execution, defect reporting and test-cycle closure
-- **Designed and executed 200+ functional, regression, API and database test cases** to validate business requirements and product quality
-- **Developed and maintained Cypress/Selenium automation scripts** using Java-based frameworks, improving regression coverage by **20%**
-- **Executed weekly testing cycles** (smoke, sanity, exploratory, regression) and enhanced framework components using POM and reusable utilities
+## Sample Test Coverage
 
----
+* Authentication APIs
+* User Management APIs
+* CRUD Operations
+* Error Handling Validation
+* Data Integrity Checks
+* Integration Workflows
 
-## 🎓 Featured Projects & Impact
+## Execution
 
-### Dataset Automation Framework
-Created an **end-to-end account setup flow** integrating MDC, Salesforce and Mailinator, reducing setup effort by **40%**
+Run all tests:
 
-### AI Bug Reporter
-Designed a **Claude/MCP-based workflow** that improved defect documentation quality and reduced bug-report creation time by **25%** during regression cycles
+```bash
+mvn clean test
+```
 
-### Mobile & API Automation
-Automated **300+ Appium mobile tests** and built/maintained **500+ REST API automation scenarios** across fintech and telecom applications
+Run specific suite:
 
----
+```bash
+mvn test -DsuiteXmlFile=testng.xml
+```
 
-## 📚 Education & Certifications
+Generate reports:
 
-**Amity University, Noida, India**
-- Bachelor of Technology (B.Tech), Electrical and Electronics Engineering | Aug 2018 - Mar 2022
+```bash
+mvn surefire-report:report
+```
 
-**Certifications:**
-- ✅ Linux Mastery (Udemy)
-- ✅ PostgreSQL (Udemy)
-- ✅ API Testing using REST Assured
-- ✅ Git & GitHub Version Control (Udemy)
+## CI/CD Integration
 
----
+The framework can be integrated with:
 
-## 📊 Key Metrics & Achievements
+* Jenkins Pipelines
+* GitHub Actions
+* Scheduled Regression Runs
+* Pull Request Validation
+* Release Readiness Testing
 
-| Metric | Impact |
-|--------|--------|
-| Test Automation Coverage | **20-30%** improvement in regression coverage |
-| Flaky Tests Reduction | **25-30%** fewer false negatives |
-| Manual Effort Reduction | **20-40%** reduction in repetitive setup & testing |
-| Test Case Design | **15%** reduction in defect leakage |
-| Automation Stability | **20%** reduction in test reruns |
-| Mobile Test Automation | **300+** Appium test cases automated |
-| API Automation Coverage | **500+** REST API scenarios maintained |
+## Key Metrics
 
----
+* Test Pass Rate
+* API Response Time
+* Defect Leakage
+* Regression Coverage
+* Automation Coverage
 
-## 🔗 Connect With Me
+## Skills Demonstrated
 
-- **GitHub:** [@Yajoushi](https://github.com/Yajoushi)
-- **Email:** [yajushis@gmail.com](mailto:yajushis@gmail.com)
-- **Phone:** +91 82787 96760
-- **Location:** New Delhi, India 🇮🇳
+* REST Assured Framework Design
+* API Test Automation
+* TestNG
+* Java
+* SQL Validation
+* JSON Schema Validation
+* CI/CD Integration
+* Test Reporting
+* Service Reliability Testing
 
----
+## Why This Project Matters
 
-**Last Updated:** June 5, 2026
+API testing forms the foundation of modern quality engineering. By validating services early in the development lifecycle, teams can identify defects faster, improve release confidence, and reduce dependency on manual UI testing.
 
-*Building quality through intelligent automation | Passionate about scalable QA practices | Open to impactful automation challenges*
+## Author
+
+Yajoushi Sharma
+
+QA Automation Engineer | SDET
+
+Core Skills: REST Assured, Java, TestNG, SQL, Postman, Jenkins, GitHub Actions, CI/CD
