@@ -54,7 +54,3 @@ allure serve allure-results
 - **Code Coverage**: 85%
 - **Average Execution Time**: 15 minutes
 - **Failure Detection Rate**: 98%
-
----
-
-**Last Updated**: June 7, 2026
